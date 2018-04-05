@@ -5,15 +5,15 @@
 
 function [h, u, x] = PoissonFiniteDifference(n,a,b,source,order,type)
 
-    x = linspace(a,b,n);
+    x = [linspace(a,b,n)]';
     h = x(2)-x(1);
     dX2 = h^2;
     n_interior = length(x);
     
     A = Problem1_Amatrix(n_interior,order,type);
     
-    f = dX2.*Problem1_RHS(x',source);
-    f = Problem1_BC(f,a,b,source,type);
+    f = dX2.*Problem1_RHS(x,source);
+    f = Problem1_BC(f,a,b,h,source,order,type);
     
     u = zeros(length(x),1);
     u(1:end) = A\f;

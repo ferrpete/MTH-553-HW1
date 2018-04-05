@@ -4,7 +4,7 @@
 
 function f = Problem1_RHS(x,source)
 
-if source == '1'
+if string(source) == string('1')
 
     f = -exp(x);
     
