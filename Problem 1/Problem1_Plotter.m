@@ -20,5 +20,7 @@ loglog(h,h.^2,'k-',h,MaxError,'r*-',h,L2Error,'b*-')
 xlabel('Stepsize, h')
 ylabel('Grid Norm')
 legend('Quadratic','L^{\infty}','L^2')
+legend('location','southeast')
+axis([-inf,inf,-inf,inf])
 
 end

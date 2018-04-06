@@ -3,7 +3,7 @@
 % A program to calculate Poisson's equation for various boundary condition
 % schemes and source terms
 
-n = [8,16,32,64,128];
+n = [64,128,256,512,1024];
 N = length(n);
 a = 0;
 b = 1;
@@ -14,12 +14,16 @@ ue = cell(N,1);
 
 for i=1:N
 
-    source = '2';
+    source = '1';
     order = '1st';
-    type = 'Neumann';
+    type = 'Dirichlet';
     [h(i),u{i},x{i}] = PoissonFiniteDifference(n(i),a,b,source,order,type);
     ue{i} = Problem1_Exact(x{i},source);
 
 end
 
 Problem1_Plotter(n,h,u,ue,x);
+
+figure
+plot(x{end},u{end},'k-')
+xlabel('Po
